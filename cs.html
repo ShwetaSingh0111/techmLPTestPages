@@ -48,16 +48,13 @@ var requestOptions = {
 
 
 fetch("https://lo.data.liveperson.net/operations/api/account/70798433/msgqueuehealth/current/?skillIds=5456215850&toMillis="+unixTimeInMilliseconds1+"&fromMillis="+twoMinutesAgoUnixTime1+"&v=2&overdueConversations=true", requestOptions)
-  .then(response => {
-      response.text();
-      console.log(response.text());
-    /*
+  .then(response => {  
       var queueLen=response.metricsTotal.unassignedConversations;
     if(queueLen>=2){
       lpTag=null;
       alert("No agent available");
     }
-    */
+    
   }
     )
   .then(result => console.log(result))
