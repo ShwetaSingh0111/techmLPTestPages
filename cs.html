@@ -25,6 +25,35 @@
     .then(data => console.log(data));
   }
 </script>
+    <script>
+function checkQuequeSize(){
+
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Authorization", "Bearer 85b9b90040f8fbe375a0a2242d6c0792daa627af5c4b9abee297cf406d8bc17d");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch("https://lo.data.liveperson.net/operations/api/account/70798433/msgqueuehealth/current/?skillIds=5456215850&toMillis={{unixTime}}&fromMillis={{twoMinutesAgoUnixTime}}&v=2&overdueConversations=true", requestOptions)
+  .then(response => {
+    var queueLen=response.metricsTotal.unassignedConversations;
+    if(queueLen>=2){
+      lpTag=null;
+      alert("No agent available");
+    }
+  }
+    )
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+}
+
+</script>
+
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         
@@ -80,7 +109,7 @@
         alert("agents are not available right now, please come back after sometime.");
       }
     </script>
-    <div type='button' id="LP_DIV_1701242073395" onclick="getAgentAvail()"></div>
+    <div type='button' id="LP_DIV_1701242073395" onclick="checkQuequeSize()"></div>
 
 </footer>
 </html>
