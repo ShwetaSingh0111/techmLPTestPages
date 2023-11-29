@@ -29,9 +29,10 @@
 function checkQuequeSize(){
 
 const unixTimeInMilliseconds = new Date().getTime();
+var unixTimeInMilliseconds1=unixTimeInMilliseconds.toString();
 // Calculate the Unix time for two minutes ago (in milliseconds)
 const twoMinutesAgoUnixTime = unixTimeInMilliseconds - (60 * 60 * 1000);
- 
+ var twoMinutesAgoUnixTime1=twoMinutesAgoUnixTime.toString();
 // Set the variable for two minutes ago
 
 
@@ -46,9 +47,10 @@ var requestOptions = {
 };
 
 
-fetch("https://lo.data.liveperson.net/operations/api/account/70798433/msgqueuehealth/current/?skillIds=5456215850&toMillis="+unixTimeInMilliseconds+"&fromMillis="+twoMinutesAgoUnixTime+"&v=2&overdueConversations=true", requestOptions)
+fetch("https://lo.data.liveperson.net/operations/api/account/70798433/msgqueuehealth/current/?skillIds=5456215850&toMillis="+unixTimeInMilliseconds1+"&fromMillis="+twoMinutesAgoUnixTime1+"&v=2&overdueConversations=true", requestOptions)
   .then(response => {
       response.text();
+      console.log(response.text());
     /*
       var queueLen=response.metricsTotal.unassignedConversations;
     if(queueLen>=2){
