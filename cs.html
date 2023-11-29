@@ -28,6 +28,13 @@
     <script>
 function checkQuequeSize(){
 
+const unixTimeInMilliseconds = new Date().getTime();
+// Calculate the Unix time for two minutes ago (in milliseconds)
+const twoMinutesAgoUnixTime = unixTimeInMilliseconds - (60 * 60 * 1000);
+ 
+// Set the variable for two minutes ago
+
+
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Authorization", "Bearer 85b9b90040f8fbe375a0a2242d6c0792daa627af5c4b9abee297cf406d8bc17d");
@@ -38,7 +45,8 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://lo.data.liveperson.net/operations/api/account/70798433/msgqueuehealth/current/?skillIds=5456215850&toMillis={{unixTime}}&fromMillis={{twoMinutesAgoUnixTime}}&v=2&overdueConversations=true", requestOptions)
+
+fetch("https://lo.data.liveperson.net/operations/api/account/70798433/msgqueuehealth/current/?skillIds=5456215850&toMillis="+unixTimeInMilliseconds+"&fromMillis="+twoMinutesAgoUnixTime+"&v=2&overdueConversations=true", requestOptions)
   .then(response => {
       response.text();
     /*
