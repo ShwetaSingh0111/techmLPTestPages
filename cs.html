@@ -74,7 +74,13 @@
         
   <h3>Chat with embedded button</h3>
     
-     <div type="button" id="LP_DIV_1701242073395" onclick="alert('Agents are not available, please come after some time')"></div>
+    <script>
+      function getAgentAvail(){
+        lpTag=null;
+        alert("agents are not available right now, please come back after sometime.");
+      }
+    </script>
+    <div type='button' id="LP_DIV_1701242073395" onclick="getAgentAvail()"></div>
 
 </footer>
 </html>
